@@ -14,31 +14,21 @@ runs:
   using: "composite"
   steps:
     - run: |
-        echo "URL=\"${{ inputs.url }}\"" >> $GITHUB_ENV
-        echo "TOKEN=\"${{ inputs.token }}\"" >> $GITHUB_ENV
-        echo "TIMESTAMP=\"$(date --iso-8601=seconds)\"" >> $GITHUB_ENV
-        echo "REPOSITORY=\"${{ github.github_server_url }}/${{ github.repository }}\"" >> $GITHUB_ENV
-        echo "REPO_OWNER=\"${{ inputs.repo_owner }}\"" >> $GITHUB_ENV
-        echo "BRANCH=\"${{ github.ref }}\"" >> $GITHUB_ENV
-        echo "COMMIT=\"${{ github.sha }}\"" >> $GITHUB_ENV
-        echo "EXECUTED_CONTROL=\"${{ github.workflow }}\"" >> $GITHUB_ENV
-        echo "CONTROL_RESULT=\"success\"" >> $GITHUB_ENV
-        echo "CONTROL_OUTPUT=\"Control success\"" >> $GITHUB_ENV
-        echo "JOB_URL=\"${{ github.event.repository.html_url }}/actions/runs/${{ github.run_id }}\"" >> $GITHUB_ENV
+        echo "TIMESTAMP='$(date --iso-8601=seconds)'" >> $GITHUB_ENV
       shell: bash
     - run: |
-        curl --location "$URL" \
+        curl --location '${{ inputs.url }}'' \
           --header 'Content-Type: application/json' \
-          --header 'APIKEY: '$TOKEN'' \
+          --header 'APIKEY: '${{ inputs.token }}'' \
           --data '{
           "timestamp": "'$TIMESTAMP'",
-          "repository": "'$REPOSITORY'",
-          "repo_owner": "'$REPO_OWNER'",
-          "branch": "'$BRANCH'",
-          "commit": "'$COMMIT'",
-          "executed_control": "'$EXECUTED_CONTROL'",
-          "control_result": "'$CONTROL_RESULT'",
-          "control_output": "'$CONTROL_OUTPUT'",
-          "job_url": "'$JOB_URL'"
+          "repository": "${{ github.github_server_url }}/${{ github.repository }}",
+          "repo_owner": "${{ inputs.repo_owner }}",
+          "branch": "${{ github.ref }}",
+          "commit": "${{ github.sha }}",
+          "executed_control": "${{ github.workflow }}",
+          "control_result": "Success",
+          "control_output": "Control success",
+          "job_url": "${{ github.event.repository.html_url }}/actions/runs/${{ github.run_id }}"
         }'
       shell: bash
