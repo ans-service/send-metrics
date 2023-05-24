@@ -13,6 +13,9 @@ inputs:
 runs:
   using: "composite"
   steps:
+    - name: Install cURL
+      run: sudo apt-get update && sudo apt-get install -y curl
+      shell: bash
     - name: "Set up environment"
       shell: bash
       run: |
