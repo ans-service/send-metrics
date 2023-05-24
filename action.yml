@@ -17,7 +17,7 @@ runs:
         echo "TIMESTAMP='$(date --iso-8601=seconds)'" >> $GITHUB_ENV
       shell: bash
     - run: |
-        curl --location '${{ inputs.url }}'' \
+        curl --location '${{ inputs.url }}' \
           --header 'Content-Type: application/json' \
           --header 'APIKEY: '${{ inputs.token }}'' \
           --data '{
