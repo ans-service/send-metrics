@@ -27,8 +27,18 @@ runs:
         echo "JOB_URL=${{ github.event.repository.html_url }}/actions/runs/${{ github.run_id }}" >> $GITHUB_ENV
       shell: bash
     - run: |
-        pwd
-        ls -ltr
-      shell: bash
-    - run: sendmetrics.sh
+        curl --location "$URL" \
+          --header 'Content-Type: application/json' \
+          --header 'APIKEY: '$TOKEN'' \
+          --data '{
+          "timestamp": "'$TIMESTAMP'",
+          "repository": "'$REPOSITORY'",
+          "repo_owner": "'$REPO_OWNER'",
+          "branch": "'$BRANCH'",
+          "commit": "'$COMMIT'",
+          "executed_control": "'$EXECUTED_CONTROL'",
+          "control_result": "'$CONTROL_RESULT'",
+          "control_output": "'$CONTROL_OUTPUT'",
+          "job_url": "'$JOB_URL'"
+        }'
       shell: bash
