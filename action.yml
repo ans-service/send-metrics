@@ -31,5 +31,5 @@ runs:
         echo "CONTROL_OUTPUT='Control success'" >> $GITHUB_ENV
         echo "JOB_URL=${{ github.event.repository.html_url }}/actions/runs/${{ github.run_id }}" >> $GITHUB_ENV
     - name: "Send metrics"
-      run: send-metrics.sh
+      run: sendmetrics.sh
       shell: bash
