@@ -22,7 +22,7 @@ This action sends metrics to API Rest Service.
 
 ```yaml
 
-uses: ans-services/send-metrics@v1
+uses: ans-service/send-metrics@v1
 with:
   url: 'http://localhost:8080'
   token: ${{ secrets.TOKEN }}
