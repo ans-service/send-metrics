@@ -1,6 +1,4 @@
-#!/bin/sh
 # Send metric to API Rest Service
-
 curl --location "$URL" \
     --header 'Content-Type: application/json' \
     --header 'APIKEY: '$TOKEN'' \
