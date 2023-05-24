@@ -21,7 +21,7 @@ runs:
           --header 'Content-Type: application/json' \
           --header 'APIKEY: '${{ inputs.token }}'' \
           --data '{
-          "timestamp": "'$TIMESTAMP'",
+          "timestamp": "${{ env.TIMESTAMP }}",
           "repository": "${{ github.github_server_url }}/${{ github.repository }}",
           "repo_owner": "${{ inputs.repo_owner }}",
           "branch": "${{ github.ref }}",
