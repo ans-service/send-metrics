@@ -13,9 +13,6 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: Install cURL
-      run: sudo apt-get update && sudo apt-get install -y curl
-      shell: bash
     - name: "Set up environment"
       shell: bash
       run: |
@@ -31,5 +28,5 @@ runs:
         echo "CONTROL_OUTPUT='Control success'" >> $GITHUB_ENV
         echo "JOB_URL=${{ github.event.repository.html_url }}/actions/runs/${{ github.run_id }}" >> $GITHUB_ENV
     - name: "Send metrics"
-      run: sendmetrics.sh
+      run: ./sendmetrics.sh
       shell: bash
