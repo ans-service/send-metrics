@@ -14,17 +14,17 @@ runs:
   using: "composite"
   steps:
     - run: |
-        echo "URL=${{ inputs.url }}" >> $GITHUB_ENV
-        echo "TOKEN=${{ inputs.token }}" >> $GITHUB_ENV
-        echo "TIMESTAMP=$(date --iso-8601=seconds)" >> $GITHUB_ENV
-        echo "REPOSITORY=${{ github.github_server_url }}/${{ github.repository }}" >> $GITHUB_ENV
-        echo "REPO_OWNER=${{ inputs.repo_owner }}" >> $GITHUB_ENV
-        echo "BRANCH=${{ github.ref }}" >> $GITHUB_ENV
-        echo "COMMIT=${{ github.sha }}" >> $GITHUB_ENV
-        echo "EXECUTED_CONTROL=${{ github.workflow }}" >> $GITHUB_ENV
-        echo "CONTROL_RESULT=success" >> $GITHUB_ENV
-        echo "CONTROL_OUTPUT='Control success'" >> $GITHUB_ENV
-        echo "JOB_URL=${{ github.event.repository.html_url }}/actions/runs/${{ github.run_id }}" >> $GITHUB_ENV
+        echo "URL=\"${{ inputs.url }}\"" >> $GITHUB_ENV
+        echo "TOKEN=\"${{ inputs.token }}\"" >> $GITHUB_ENV
+        echo "TIMESTAMP=\"$(date --iso-8601=seconds)\"" >> $GITHUB_ENV
+        echo "REPOSITORY=\"${{ github.github_server_url }}/${{ github.repository }}\"" >> $GITHUB_ENV
+        echo "REPO_OWNER=\"${{ inputs.repo_owner }}\"" >> $GITHUB_ENV
+        echo "BRANCH=\"${{ github.ref }}\"" >> $GITHUB_ENV
+        echo "COMMIT=\"${{ github.sha }}\"" >> $GITHUB_ENV
+        echo "EXECUTED_CONTROL=\"${{ github.workflow }}\"" >> $GITHUB_ENV
+        echo "CONTROL_RESULT=\"success\"" >> $GITHUB_ENV
+        echo "CONTROL_OUTPUT=\"Control success\"" >> $GITHUB_ENV
+        echo "JOB_URL=\"${{ github.event.repository.html_url }}/actions/runs/${{ github.run_id }}\"" >> $GITHUB_ENV
       shell: bash
     - run: |
         curl --location "$URL" \
