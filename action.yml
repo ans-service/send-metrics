@@ -22,7 +22,7 @@ runs:
           --header 'APIKEY: '${{ inputs.token }}'' \
           --data '{
           "timestamp": "${{ env.TIMESTAMP }}",
-          "repository": "${{ github.github_server_url }}/${{ github.repository }}",
+          "repository": "${{ github.server_url }}/${{ github.repository }}",
           "repo_owner": "${{ inputs.repo_owner }}",
           "branch": "${{ github.ref }}",
           "commit": "${{ github.sha }}",
